@@ -42,6 +42,7 @@ def register_user(request):
     Method arguments:
       request -- The full HTTP request object
     '''
+    # Check if user email already exists 
     try:
         User.objects.get(email = request.data['email'])
         return Response({"Message": "User with that Email Already Exist"},status=status.HTTP_400_BAD_REQUEST)
@@ -57,7 +58,7 @@ def register_user(request):
         last_name=request.data['last_name']
     )
 
-    # Now save the extra info in the levelupapi_gamer table
+    # Now save the extra info in the metainfoapi manager table
     manager = Manager.objects.create(
         user=new_user,
         store = request.data['store_id']
