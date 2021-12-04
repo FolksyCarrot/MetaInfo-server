@@ -42,7 +42,11 @@ def register_user(request):
     Method arguments:
       request -- The full HTTP request object
     '''
-
+    try:
+        User.objects.get(email = request.data['email'])
+        return Response({"Message": "User with that Email Already Exist"},status=status.HTTP_400_BAD_REQUEST)
+    except:
+        pass
     # Create a new user by invoking the `create_user` helper method
     # on Django's built-in User model
     new_user = User.objects.create_user(
