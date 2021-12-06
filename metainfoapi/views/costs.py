@@ -9,7 +9,7 @@ from django.http import HttpResponseServerError
 
 from metainfoapi.models.projects import Projects
 
-class Cost(ViewSet):
+class CostView(ViewSet):
     
     def create(self, request):
         project = Projects.objects.get(pk=request.data['project_id'])
