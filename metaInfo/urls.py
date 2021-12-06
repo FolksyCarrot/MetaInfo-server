@@ -16,11 +16,15 @@ Including another URLconf
 from django.contrib import admin
 from django.conf.urls import include
 from django.urls import path
-from metainfoapi.views import register_user, login_user, StoreView
+from metainfoapi.views import register_user, login_user, StoreView, EmployeeView
 from rest_framework import routers
+
+from metainfoapi.views.customer import CustomerView
 
 router = routers.DefaultRouter(trailing_slash=False)
 router.register(r'stores', StoreView, 'store')
+router.register(r'employees', EmployeeView, 'employee')
+router.register(r'customers', CustomerView, 'customer')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
