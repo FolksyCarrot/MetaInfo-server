@@ -27,7 +27,7 @@ class EmployeeView(ViewSet):
     def create(self, request):
         try:
             employee = Employees.objects.create(
-                name = request.data['name']
+                name = request.data['name'],
                 position = request.data['position'],
                 salary = request.data['salary']
             )
