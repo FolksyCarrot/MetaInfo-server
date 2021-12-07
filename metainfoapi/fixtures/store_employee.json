@@ -1,0 +1,18 @@
+[
+    {
+        "model": "metainfoapi.storeemployees",
+        "pk": 1,
+        "fields": {
+            "employee": 1,
+            "store": 2
+        }  
+    },
+    {
+        "model": "metainfoapi.storeemployees",
+        "pk": 2,
+        "fields": {
+            "employee": 2,
+            "store": 1
+        }    
+    }
+]
