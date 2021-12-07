@@ -5,5 +5,13 @@
         "--load-plugins=pylint_django",
         "--django-settings-module=metainf-server/metainfo/settings.py.settings",
     ],
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "metainfo_server",
+            "database": "db.sqlite3"
+        }
+    ],
     
 }

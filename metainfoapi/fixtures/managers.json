@@ -1,6 +1,6 @@
 [
     {
-        "model": "metainfoapi.managers",
+        "model": "metainfoapi.manager",
         "pk": 1,
         "fields": {
         "user": 1,

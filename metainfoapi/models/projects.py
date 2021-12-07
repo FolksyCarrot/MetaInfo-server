@@ -1,9 +1,9 @@
 from django.db import models
 
 class Projects(models.Model):
-    employee = models.ForeignKey("Employee")
-    customer = models.ForeignKey("Customer")
-    store = models.ForeignKey("Store")
+    employee = models.ForeignKey("Employees", on_delete=models.CASCADE)
+    customer = models.ForeignKey("Customer", on_delete=models.CASCADE)
+    store = models.ForeignKey("Store", on_delete=models.CASCADE)
     description = models.TextField()
     budget = models.IntegerField()
     start = models.DateField()

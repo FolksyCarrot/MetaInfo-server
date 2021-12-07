@@ -1,6 +1,6 @@
 [
     {
-        "model": "metainfoapi.stores",
+        "model": "metainfoapi.store",
         "pk": 1,
         "fields": {
             "name": "365 Logistics",
@@ -8,7 +8,7 @@
         }
     },
     {
-        "model": "metainfoapi.stores",
+        "model": "metainfoapi.store",
         "pk": 2,
         "fields": {
             "name": "Aventus Technologies",
@@ -16,7 +16,7 @@
         }
     },
     {
-        "model": "metainfoapi.stores",
+        "model": "metainfoapi.store",
         "pk": 3,
         "fields": {
             "name": "Converiasant Wastewater",

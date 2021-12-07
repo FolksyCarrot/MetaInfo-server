@@ -1,13 +1,13 @@
 [
     {
-        "models": "metainfoapi.customer",
+        "model": "metainfoapi.customer",
         "pk": 1,
         "fields": {
            "name": "City of Los Angeles" 
         }
     },
     {
-        "models": "metainfoapi.customer",
+        "model": "metainfoapi.customer",
         "pk": 2,
         "fields": {
            "name": "77 Logistics" 

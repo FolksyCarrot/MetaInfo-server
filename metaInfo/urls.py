@@ -20,16 +20,19 @@ from metainfoapi.views import register_user, login_user, StoreView, EmployeeView
 from rest_framework import routers
 
 from metainfoapi.views.customer import CustomerView
+from metainfoapi.views.projects import ProjectView
 
 router = routers.DefaultRouter(trailing_slash=False)
 router.register(r'stores', StoreView, 'store')
 router.register(r'employees', EmployeeView, 'employee')
 router.register(r'customers', CustomerView, 'customer')
 router.register(r'costs', CostView, 'cost')
+router.register(r'projects', ProjectView, 'project')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('register', register_user),
-    path('login', login_user)
+    path('login', login_user),
+    path('', include(router.urls))
     
 ]

@@ -29,10 +29,10 @@ class StoreView(ViewSet):
 class EmployeeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Employees
-        fields= '__all__'    
+        fields= ('id', 'name')    
         
 class StoreSerializer(serializers.ModelSerializer):
-    employee = EmployeeSerializer()
+    employees = EmployeeSerializer(many=True)
     class Meta:
         model = Store
-        fields = ('name', 'location', 'employee')
+        fields = ('name', 'location', 'employees')

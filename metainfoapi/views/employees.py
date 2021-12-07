@@ -6,6 +6,7 @@ from rest_framework import status
 from metainfoapi.models import Employees
 from django.core.exceptions import ValidationError
 from django.http import HttpResponseServerError
+from metainfoapi.models.store_employees import StoreEmployees
 
 from metainfoapi.models.stores import Store
 
@@ -44,23 +45,17 @@ class EmployeeView(ViewSet):
         employee.save()
         return Response({'message': 'employee updated'}, status = status.HTTP_204_NO_CONTENT)
     
-    def destroy(self, request, pk=None):
-        try:
-            employee= Employees.objects.get(pk=pk)
-            employee.delete()
-            return Response({'message': 'employee deleted'}, status=status.HTTP_204_NO_CONTENT)
-        except Employees.DoesNotExist as ex:
-            return Response({'message': ex.args[0]}, status=status.HTTP_404_NOT_FOUND)
-        except Exception as ex:
-            return Response({'message': ex.args[0]}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    
             
+
+
 class StoreSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Store
-        fields = '__all__'
-        
+        model= Store
+        fields = ('name', 'id')      
+         
 class EmployeeSerializer(serializers.ModelSerializer):
-    store = StoreSerializer()
+    store_employee = StoreSerializer(many=True)
     class Meta:
         model = Employees
-        fields = ('name', 'position', 'salary', 'store')
+        fields = ('name', 'position', 'salary', 'store_employee')

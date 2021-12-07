@@ -12,6 +12,7 @@ from metainfoapi.models.employees import Employees
 
 from metainfoapi.models.managers import Manager
 from metainfoapi.models.stores import Store
+from metainfoapi.views.costs import CostSerializer
 
 class ProjectView(ViewSet):
     def create(self, request):
@@ -38,7 +39,16 @@ class ProjectView(ViewSet):
         
     def list(self, request):
         manager = Manager.objects.get(user = request.auth.user)
-        store = Store.objects.get(pk=manager.store)
-        store.project = store.project_set.all()
-        serializer = ProjectSerializer(store, many=True, context = {'request': request})
+        store = Store.objects.get(pk=manager.store.id)
+        projects = Projects.objects.filter(store = store)
+        for project in projects:
+            project.cost = project.projectcost_set.all()
+        serializer = ProjectSerializer(projects, many=True, context = {'request': request})
         return Response(serializer.data)
+    
+class ProjectSerializer(serializers.ModelSerializer):
+    cost = CostSerializer(many =True)
+    class Meta:
+        model = Projects
+        fields = ('id', 'employee', 'customer', 'store', 'description', 'budget', 'start', 'expected_completion', 'is_completed', 'cost')
+        depth = 1
