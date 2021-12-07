@@ -1,7 +1,7 @@
 from django.db import models
 
 class ProjectCost(models.Model):
-    label = models.CharField(max_length=30)
+    label = models.CharField(max_length=100)
     cost = models.IntegerField()
     project = models.ForeignKey("Project")
     

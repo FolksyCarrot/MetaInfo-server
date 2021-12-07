@@ -35,3 +35,10 @@ class ProjectView(ViewSet):
             return Response(serializer.data, status= status.HTTP_201_CREATED)
         except ValidationError as ex:
             return Response({"reason": ex.message}, status=status.HTTP_400_BAD_REQUEST)
+        
+    def list(self, request):
+        manager = Manager.objects.get(user = request.auth.user)
+        store = Store.objects.get(pk=manager.store)
+        store.project = store.project_set.all()
+        serializer = ProjectSerializer(store, many=True, context = {'request': request})
+        return Response(serializer.data)

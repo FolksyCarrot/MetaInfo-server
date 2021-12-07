@@ -1,0 +1,27 @@
+[
+    {
+        "model": "metainfoapi.stores",
+        "pk": 1,
+        "fields": {
+            "name": "365 Logistics",
+            "location": "Panama City, FL"
+        }
+    },
+    {
+        "model": "metainfoapi.stores",
+        "pk": 2,
+        "fields": {
+            "name": "Aventus Technologies",
+            "location": "Prairie View, TX"
+        }
+    },
+    {
+        "model": "metainfoapi.stores",
+        "pk": 3,
+        "fields": {
+            "name": "Converiasant Wastewater",
+            "location": "Dodge City, KS"
+        }
+    }
+
+]

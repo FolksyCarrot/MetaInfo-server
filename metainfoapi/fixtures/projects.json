@@ -1,0 +1,30 @@
+[
+    {
+        "model": "metainfoapi.projects",
+        "pk": 1,
+        "fields": {
+            "employee": 1,
+            "customer": 1,
+            "store": 2,
+            "description": "Building water Works project for Los Angles County", 
+            "budget": 5000000, 
+            "start":"2022-02-02", 
+            "expected_completion": "2024-01-05",
+            "is_completed": false 
+        }
+    },
+    {
+        "model": "metainfoapi.projects",
+        "pk": 2,
+        "fields": {
+            "employee": 3,
+            "customer": 2,
+            "store": 1,
+            "description": "Building Logistics Warehouse for recently acquired subsidiary", 
+            "budget": 10000000, 
+            "start": "2021-08-22", 
+            "expected_completion": "2023-02-10" ,
+            "is_completed": false 
+        }
+    }
+]

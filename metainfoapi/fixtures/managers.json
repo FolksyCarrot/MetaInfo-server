@@ -1,0 +1,10 @@
+[
+    {
+        "model": "metainfoapi.managers",
+        "pk": 1,
+        "fields": {
+        "user": 1,
+        "store_id": 2
+        }
+    }
+]
