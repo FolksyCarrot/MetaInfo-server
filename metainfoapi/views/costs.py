@@ -17,7 +17,7 @@ class CostView(ViewSet):
             cost = ProjectCost.objects.create(
                label = request.data['label'],
                cost = request.data['cost'],
-               project_id = project
+               project = project
             )
             serializer = CostSerializer(cost, context = {'request': request})
             return Response(serializer.data, status= status.HTTP_201_CREATED)
@@ -26,10 +26,11 @@ class CostView(ViewSet):
             return Response({"reason": ex.message}, status=status.HTTP_400_BAD_REQUEST)
         
     def list(self, request):
-        project = Projects.objects.get(pk=request.data['project_id'])
-        cost = ProjectCost.objects.all()
-        serializer = CostSerializer(cost, context = {'request': request})
-        return Response(serializer.data, status= status.HTTP_200_OK)
+        project_id = self.request.query_params.get('project_id', None)
+        if project_id is not None:
+            cost = ProjectCost.objects.filter(project = project_id)
+            serializer = CostSerializer(cost, many=True, context = {'request': request})
+            return Response(serializer.data, status= status.HTTP_200_OK)
     
     def retrieve(self, request, pk=None):
         try: 
