@@ -46,6 +46,15 @@ class ProjectView(ViewSet):
         serializer = ProjectSerializer(projects, many=True, context = {'request': request})
         return Response(serializer.data)
     
+    def retrieve(self, request, pk=None):
+        try:
+            project = Projects.objects.get(pk=pk)
+            project.cost = project.projectcost_set.all()
+            serializer = ProjectSerializer(project, many = False, context = {'request': request})
+            return Response(serializer.data)
+        except: 
+            return Response("project does not exist", status=status.HTTP_404_NOT_FOUND)
+    
 class ProjectSerializer(serializers.ModelSerializer):
     cost = CostSerializer(many =True)
     class Meta:
