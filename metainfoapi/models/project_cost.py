@@ -1,6 +1,8 @@
 from django.db import models
 
 class ProjectCost(models.Model):
-    label = models.CharField(max_length=30)
+    label = models.CharField(max_length=100)
     cost = models.IntegerField()
-    store = models.ForeignKey("Store")
+    project = models.ForeignKey("Projects", on_delete=models.CASCADE)
+    
+    # store = models.ForeignKey("Store")

@@ -1,0 +1,29 @@
+[
+    {
+        "model": "metainfoapi.employees",
+        "pk": 1,
+        "fields": {
+            "name": "Bill Jackson",
+            "position": "Project Manager",
+            "salary": 110000
+        }
+    },
+    {
+        "model": "metainfoapi.employees",
+        "pk": 2,
+        "fields": {
+            "name": "Gus Pulley",
+            "position": "Project Manager",
+            "salary": 90500
+        }
+    },
+    {
+        "model": "metainfoapi.employees",
+        "pk": 3,
+        "fields": {
+            "name": "Sarah Eisner",
+            "position": "Project Manager",
+            "salary": 100000
+        }
+    }
+]

@@ -1,0 +1,62 @@
+[
+    {
+        "model": "metainfoapi.projectcost",
+        "pk": 1,
+        "fields": {
+            "label": "Water Pipes",
+            "cost": 320000,
+            "project": 1
+        }
+    
+    },
+    {
+        "model": "metainfoapi.projectcost",
+        "pk": 2,
+        "fields": {
+            "label": "Reservoirs and Dams",
+            "cost": 1064000,
+            "project": 1
+        }
+    
+    },
+    {
+        "model": "metainfoapi.projectcost",
+        "pk": 3,
+        "fields": {
+            "label": "coding permits and checks",
+            "cost": 115300,
+            "project": 1
+        }
+    
+    },
+    {
+        "model": "metainfoapi.projectcost",
+        "pk": 4,
+        "fields": {
+            "label": "Concrete, rebar, and other supplies",
+            "cost": 11040200,
+            "project": 2
+        }
+    
+    },
+    {
+        "model": "metainfoapi.projectcost",
+        "pk": 5,
+        "fields": {
+            "label": "staffing Agency Costs",
+            "cost": 1964000,
+            "project": 2
+        }
+    
+    },
+    {
+        "model": "metainfoapi.projectcost",
+        "pk": 6,
+        "fields": {
+            "label": "Warehouse Software and IT systems",
+            "cost": 867000,
+            "project": 2
+        }
+    
+    }
+]
