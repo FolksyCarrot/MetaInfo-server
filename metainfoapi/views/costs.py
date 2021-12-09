@@ -56,6 +56,7 @@ class CostView(ViewSet):
         
         try:
             cost = ProjectCost.objects.get(pk=pk)
+            cost.delete()
             return Response({}, status=status.HTTP_204_NO_CONTENT)
         except ProjectCost.DoesNotExist as ex:
             return Response({'message': ex.args[0]}, status=status.HTTP_404_NOT_FOUND)
@@ -66,4 +67,4 @@ class CostView(ViewSet):
 class CostSerializer(serializers.ModelSerializer):
     class Meta:
         model = ProjectCost
-        fields = ('label', 'cost', 'project')
+        fields = ('id','label', 'cost', 'project')
