@@ -6,10 +6,13 @@ from rest_framework import status
 from metainfoapi.models import Store
 from django.core.exceptions import ValidationError
 from django.http import HttpResponseServerError
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import AllowAny
 
 from metainfoapi.models.employees import Employees
 
 
+@permission_classes([AllowAny])
 class StoreView(ViewSet):
     
     def list(self, request):
@@ -35,4 +38,4 @@ class StoreSerializer(serializers.ModelSerializer):
     employees = EmployeeSerializer(many=True)
     class Meta:
         model = Store
-        fields = ('name', 'location', 'employees')
+        fields = ('id','name', 'location', 'employees')

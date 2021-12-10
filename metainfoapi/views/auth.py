@@ -7,6 +7,7 @@ from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 
 from metainfoapi.models import Manager
+from metainfoapi.models.stores import Store
 
 @api_view(['POST'])
 @permission_classes([AllowAny])
@@ -61,7 +62,7 @@ def register_user(request):
     # Now save the extra info in the metainfoapi manager table
     manager = Manager.objects.create(
         user=new_user,
-        store = request.data['store_id']
+        store = Store.objects.get(pk = request.data['store_id'])
     )
 
     # Use the REST Framework's token generator on the new user account
