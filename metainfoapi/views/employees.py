@@ -66,4 +66,4 @@ class EmployeeSerializer(serializers.ModelSerializer):
     store_employee = StoreSerializer(many=True)
     class Meta:
         model = Employees
-        fields = ('name', 'position', 'salary', 'store_employee')
+        fields = ('id', 'name', 'position', 'salary', 'store_employee')
