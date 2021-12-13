@@ -9,14 +9,15 @@ from django.http import HttpResponseServerError
 from metainfoapi.models.store_employees import StoreEmployees
 
 from metainfoapi.models.stores import Store
+from metainfoapi.models.managers import Manager
 
 class EmployeeView(ViewSet):
     
     def list(self, request):
-        store_id = self.request.query_params.get("store_id", None)
+        manager = Manager.objects.get(user = request.auth.user)
         employees = Employees.objects.all()
-        if store_id is not None:
-            employees = employees.filter(store_employee__id = store_id)
+       
+        employees = employees.filter(store_employee__id = manager.store_id)
         serializer = EmployeeSerializer(employees, many=True, context={'request': request})
         return Response(serializer.data)
     
