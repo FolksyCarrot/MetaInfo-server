@@ -1,3 +1,4 @@
+![metaInfo](https://user-images.githubusercontent.com/86749126/146261527-4f0eb8d8-73e2-46ac-b07c-e02b9cde7117.png)
 
 # Meta-Info Platform API
 
