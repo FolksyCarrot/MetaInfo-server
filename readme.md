@@ -1,4 +1,4 @@
-![Meta-Info](https://user-images.githubusercontent.com/73911337/144897638-9facefad-b79e-4a4a-a685-82a2f265e8ef.png)
+
 # Meta-Info Platform API
 
 Meta-Info is an application with project managers and financial decision makers in mind. This App allows you to keep track of your projects, your employees, your customers, and the costs involved with them. 
