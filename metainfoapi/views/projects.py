@@ -18,7 +18,7 @@ class ProjectView(ViewSet):
     def create(self, request):
         try: 
             manager = Manager.objects.get(user = request.auth.user)
-            store = Store.objects.get(pk=manager.store)
+            store = Store.objects.get(pk=manager.store.id)
             employee = Employees.objects.get(pk = request.data['employee_id'])
             customer = Customer.objects.get(pk = request.data['customer'])
             project = Projects.objects.create(
@@ -54,10 +54,28 @@ class ProjectView(ViewSet):
             return Response(serializer.data)
         except: 
             return Response("project does not exist", status=status.HTTP_404_NOT_FOUND)
+        
+    def update(self, request, pk=None):
+        manager = Manager.objects.get(user = request.auth.user)
+        store = Store.objects.get(pk=manager.store.id)
+        project = Projects.objects.get(pk=pk)
+        project.employee = project.employee
+        project.customer = project.customer
+        project.store = project.store
+        project.description = request.data['description']
+        project.budget = request.data['budget']
+        project.start = request.data['start']
+        project.expected_completion = request.data['expected_completion']
+        if request.data['is_completed'].lower() == 'true':
+            project.is_completed = True
+        else:
+            project.is_completed = False
+        project.save()
+        return Response({'message': 'project updated'}, status = status.HTTP_204_NO_CONTENT)
     
 class ProjectSerializer(serializers.ModelSerializer):
-    cost = CostSerializer(many =True)
+    cost = CostSerializer(many =True, required=False)
     class Meta:
         model = Projects
-        fields = ('id', 'employee', 'customer', 'store', 'description', 'budget', 'start', 'expected_completion', 'is_completed', 'cost')
+        fields = ('id', 'employee', 'customer', 'store', 'description', 'budget', 'start', 'expected_completion', 'is_completed', 'cost', 'totalCost')
         depth = 1

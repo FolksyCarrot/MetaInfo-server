@@ -3,17 +3,21 @@ from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers
 from rest_framework import status
-from metainfoapi.models import Employees
+from metainfoapi.models import Employees, Manager, Store
 from django.core.exceptions import ValidationError
 from django.http import HttpResponseServerError
 from metainfoapi.models.store_employees import StoreEmployees
 
 from metainfoapi.models.stores import Store
+from metainfoapi.models.managers import Manager
 
 class EmployeeView(ViewSet):
     
     def list(self, request):
+        manager = Manager.objects.get(user = request.auth.user)
         employees = Employees.objects.all()
+       
+        employees = employees.filter(store_employee__id = manager.store_id)
         serializer = EmployeeSerializer(employees, many=True, context={'request': request})
         return Response(serializer.data)
     
@@ -26,12 +30,16 @@ class EmployeeView(ViewSet):
             return Response({'message': ex.args[0]}, status=status.HTTP_404_NOT_FOUND)
         
     def create(self, request):
+        manager = Manager.objects.get(user = request.auth.user)
+        store = Store.objects.get(pk=manager.store.id)
+        
         try:
             employee = Employees.objects.create(
                 name = request.data['name'],
                 position = request.data['position'],
                 salary = request.data['salary']
             )
+            employee.store_employee.set([store.id])
             serializer = EmployeeSerializer(employee, context={'request': request})
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         except ValidationError as ex:
@@ -58,4 +66,4 @@ class EmployeeSerializer(serializers.ModelSerializer):
     store_employee = StoreSerializer(many=True)
     class Meta:
         model = Employees
-        fields = ('name', 'position', 'salary', 'store_employee')
+        fields = ('id', 'name', 'position', 'salary', 'store_employee')
