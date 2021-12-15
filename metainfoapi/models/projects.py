@@ -9,3 +9,11 @@ class Projects(models.Model):
     start = models.DateField()
     expected_completion = models.DateField()
     is_completed = models.BooleanField()
+    @property
+    def totalCost(self):
+        cost = self.projectcost_set.all()
+        total = 0
+        for expense in cost:
+            total += expense.cost
+            
+        return total

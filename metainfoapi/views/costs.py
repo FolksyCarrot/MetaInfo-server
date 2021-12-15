@@ -41,12 +41,12 @@ class CostView(ViewSet):
             return Response(status= status.HTTP_204_NO_CONTENT)
         
     def update(self, request, pk=None):
-        project = Projects.objects.get(pk=request.data['project_id'])
+        
         try:
             cost = ProjectCost.objects.get(pk=pk)
             cost.label = request.data['label']
             cost.cost = request.data['cost']
-            cost.project_id = project
+            cost.project = cost.project
             cost.save()
             return Response({'message': 'cost updated'}, status= status.HTTP_204_NO_CONTENT)
         except:
