@@ -56,6 +56,7 @@ class ProjectView(ViewSet):
             return Response("project does not exist", status=status.HTTP_404_NOT_FOUND)
         
     def update(self, request, pk=None):
+        is_completed = f'{request.data["is_completed"]}'
         manager = Manager.objects.get(user = request.auth.user)
         store = Store.objects.get(pk=manager.store.id)
         project = Projects.objects.get(pk=pk)
@@ -66,7 +67,7 @@ class ProjectView(ViewSet):
         project.budget = request.data['budget']
         project.start = request.data['start']
         project.expected_completion = request.data['expected_completion']
-        if request.data['is_completed'].lower() == 'true':
+        if is_completed.lower() == 'true':
             project.is_completed = True
         else:
             project.is_completed = False
