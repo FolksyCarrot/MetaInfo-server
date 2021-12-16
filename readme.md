@@ -10,7 +10,8 @@ Meta-Info is an application with project managers and financial decision makers 
 3. Run `pipenv install`
 4. Run migrations and make migrations
 5. Seed database with python3 manage.py loaddata {table name}
-###LoadData Order
+
+##LoadData Order
 1.users
 2.tokens
 3.stores
