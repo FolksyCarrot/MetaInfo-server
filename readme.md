@@ -12,15 +12,15 @@ Meta-Info is an application with project managers and financial decision makers 
 5. Seed database with python3 manage.py loaddata {table name}
 
 ## LoadData Order
-1.users
-2.tokens
-3.stores
-4.managers
-5.customers
-6.employees
-7.store_employees
-8.projects
-9.costs
+1. users
+2. tokens
+3. stores
+4. managers
+5. customers
+6. employees
+7. store_employees
+8. projects
+9. costs
 Now that your database is set up all you have to do is run the command:
 
 ```
